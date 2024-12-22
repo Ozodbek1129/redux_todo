@@ -10,7 +10,7 @@ export default function Card() {
   const [currentTodo, setCurrentTodo] = useState({ id: '', inputValue: '', inputTextArea: '' });
 
   const handleDelete = (id) => {
-    dispatch(deleteTodo(id)); // Fix: Make sure we're passing just the ID
+    dispatch(deleteTodo(id));
   };
 
   const handleEdit = (todo) => {
@@ -19,9 +19,8 @@ export default function Card() {
   };
 
   const handleSave = () => {
-    dispatch(editTodo(currentTodo)); // Pass the full currentTodo object to the edit action
-    setIsModalOpen(false); // Close the modal after saving
-  };
+    dispatch(editTodo(currentTodo));
+    setIsModalOpen(false);
 
   return (
     <div className='grid grid-cols-3 px-5'>
@@ -32,14 +31,14 @@ export default function Card() {
           </a>
           <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{e.inputTextArea}</p>
           <button
-            onClick={() => handleDelete(e.id)} // Correctly passing the ID here
+            onClick={() => handleDelete(e.id)}
             type="button"
             className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
           >
             Delete
           </button>
           <button
-            onClick={() => handleEdit(e)} // Open the modal with the current todo
+            onClick={() => handleEdit(e)}
             type="button"
             className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
           >
@@ -48,7 +47,6 @@ export default function Card() {
         </div>
       ))}
 
-      {/* Modal for editing */}
       {isModalOpen && (
         <div className="flex justify-center items-center fixed inset-0 bg-black bg-opacity-50">
           <div className="w-96 h-96 border px-5 py-5 gap-5 shadow rounded-lg bg-white">
@@ -76,14 +74,14 @@ export default function Card() {
             </div>
             <div className="flex justify-end gap-2">
               <button
-                onClick={() => setIsModalOpen(false)} // Close the modal
+                onClick={() => setIsModalOpen(false)}
                 type="button"
                 className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
               >
                 Close
               </button>
               <button
-                onClick={handleSave} // Save the edited todo
+                onClick={handleSave}
                 type="button"
                 className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
               >
