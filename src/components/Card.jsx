@@ -29,7 +29,7 @@ export default function Card() {
           <a href="#">
             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{e.inputValue}</h5>
           </a>
-          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{e.inputTextArea}</p>
+          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 break-words">{e.inputTextArea}</p>
           <button
             onClick={() => handleDelete(e.id)}
             type="button"
